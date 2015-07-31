@@ -1,0 +1,65 @@
+html {
+  font-family: Calibri, Helvetica Neue, Segoe UI, Helvetica, Arial, Sans-Serif;
+  font-size: 12px; }
+
+h1 {
+  text-align: center;
+  font-size: 70px;
+  margin-bottom: 100px;
+  color: white;
+  margin: 0 0 0 0;
+  height: 351px;
+  background: url("images/hat.jpg") 0% 0% no-repeat; }
+
+main {
+  width: 500px;
+  margin: 50px auto 0 auto;
+  border: solid 1px #a0a0a0;
+  padding: 0; }
+  main .inner {
+    padding: 40px; }
+
+.hat {
+  width: 600px;
+  height: 500px; }
+
+button {
+  width: 100%;
+  height: 100px;
+  font-weight: bold;
+  font-size: 50px;
+  text-transform: capitalize; }
+
+.pupil {
+  margin: 0 0 30px 0; }
+  .pupil label {
+    font-size: 36px; }
+  .pupil span {
+    font-weight: bold;
+    font-size: 60px;
+    margin-left: 20px; }
+
+.selection {
+  font-weight: bold;
+  font-size: 80px;
+  padding: 30px 0;
+  text-align: center;
+  border: solid 1px #d0d0d0;
+  margin: 50px 0; }
+
+.the-selection h2 {
+  text-align: center;
+  font-size: 80px; }
+.the-selection h3 {
+  text-align: left;
+  font-size: 60px;
+  margin: 0; }
+.the-selection div {
+  width: 200px;
+  display: inline-block; }
+  .the-selection div ul {
+    list-style-type: none;
+    margin-left: 0;
+    padding: 0; }
+    .the-selection div ul li {
+      font-size: 40px; }

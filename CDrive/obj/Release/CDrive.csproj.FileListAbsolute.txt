@@ -1,0 +1,6 @@
+C:\Users\drdan_000\Documents\CDrive\CDrive\bin\CDrive.dll.config
+C:\Users\drdan_000\Documents\CDrive\CDrive\bin\CDrive.dll
+C:\Users\drdan_000\Documents\CDrive\CDrive\bin\CDrive.pdb
+C:\Users\drdan_000\Documents\CDrive\CDrive\obj\Release\CDrive.csprojResolveAssemblyReference.cache
+C:\Users\drdan_000\Documents\CDrive\CDrive\obj\Release\CDrive.dll
+C:\Users\drdan_000\Documents\CDrive\CDrive\obj\Release\CDrive.pdb
