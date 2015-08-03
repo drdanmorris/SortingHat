@@ -22,7 +22,7 @@ angular.module('CDrive', []);
       var pupils, currentPupilIndex;
 
       $('#houses').text('Jail - 8\nPysch Ward -8');
-      $('#pupils').text('Daniel\nPaul\nBen\nGurpreet\nSonya\nRhys\nYini\nAndy\nKawai\nLuke\nNatalia\nPatrick\nPuja\nRagha\nShyarmal\nHarshila');
+      $('#pupils').text('Ben\nDaniel\nGurpreet\nHarshila\nLuke\nNatalia\nPatrick\nPaul\nRagha\nRhys\nShyarmal\nSonya\nVanita\nYini');
 
 
     	var sound = {
@@ -38,7 +38,6 @@ angular.module('CDrive', []);
       scope.picking = false;
       scope.showing = false;
       scope.enrolling = true;
-  
 
       scope.buttonClick = function() {
         action[scope.mode]();
@@ -70,7 +69,7 @@ angular.module('CDrive', []);
             scope.working = false;
             scope.enrolling = false;
             scope.picking = true;
-          }, 6000);
+          }, 1000);
         },
 
 
@@ -78,7 +77,8 @@ angular.module('CDrive', []);
           scope.working = true;
           scope.spinning = true;
           bandit.spin();
-          $timeout(this.doSort, 4500);
+          //$timeout(this.doSort, 4500);
+          $timeout(this.doSort, 100);
         },
 
 
@@ -106,14 +106,14 @@ angular.module('CDrive', []);
           results[house] = results[house] || [];
           results[house].push(scope.pupil);
 
-          if(scope.houses.length > 1) {
+          if(scope.houses.length > 1 && currentPupilIndex < pupils.length-1) {
             scope.houses.splice(maxHouse, 1);
             scope.mode = 'next';
           }
           else {
             scope.showing = true;
             scope.picking = false;
-            this.show(results);
+            action.show(results);
           }
 
           scope.working = false;
