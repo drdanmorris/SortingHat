@@ -74,6 +74,16 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="assets\rumble.mp3" />
+    <Content Include="css\images\Bet_Line.png" />
+    <Content Include="css\images\BG.png" />
+    <Content Include="css\images\potter.png" />
+    <Content Include="css\images\SYM0.png" />
+    <Content Include="css\images\SYM1.png" />
+    <Content Include="css\images\SYM2.png" />
+    <Content Include="css\images\SYM3.png" />
+    <Content Include="css\images\SYM4.png" />
+    <Content Include="css\images\SYM5.png" />
     <Content Include="css\sortingHat.css" />
     <Content Include="packages.config" />
     <None Include="Properties\PublishProfiles\ASBGees.pubxml" />
@@ -89,6 +99,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="css\images\hat.jpg" />
+    <Content Include="scripts\bandit.js" />
     <Content Include="scripts\sortingHat.js" />
     <Content Include="SortingHat.html" />
     <Content Include="Web.config" />

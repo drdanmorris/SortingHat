@@ -14,12 +14,31 @@ h1 {
 	color: white;
 	margin: 0 0 0 0;
 	height: 351px;
-	background: url('images/hat.jpg') 0% 0% no-repeat;
+	background: url('images/hat.jpg') 50% 0% no-repeat;
+}
+
+h2, h3, h4 {
+	margin: 0;
+	text-align: center;
+}
+
+h2 {
+	font-size: 50px;
+}
+
+h3 {
+	font-size: 30px;
+}
+
+h4 {
+	font-size: 16px;
+	font-weight: normal;
+	color: #606060;
 }
 
  
 main {
-	width: 500px;
+	width: 590px;
 	margin: 50px auto 0 auto;
 	border: solid 1px #a0a0a0;
 	padding: 0;
@@ -27,22 +46,50 @@ main {
 
 	.inner {
 		padding: 40px;
+		padding-top: 20px;
+		position: relative;
+		height: 500px;
 	}
 }
 
+.column {
+	width: 200px;
+}
 
-.hat {
-	width: 600px;
-	height: 500px;
-	
+.left {
+	float: left;
+}
+.right {
+	float: right;
+}
+
+textarea {
+	width: 97%;
+	height: 250px;
+}
+
+hr {
+	border: none;
+	clear: both;
+}
+
+.picking {
+	height: 400px;
+}
+
+.enrolling {
+	margin: 0 auto;
 }
 
 button {
-	width: 100%;
 	height: 100px;
 	font-weight: bold;
 	font-size: 50px;
 	text-transform: capitalize;
+	position: absolute;
+	bottom: 25px;
+	left: 25px;
+	width: 93%;
 }
 
 .pupil {
@@ -65,7 +112,7 @@ button {
 	padding: 30px 0;
 	text-align: center;
 	border: solid 1px #d0d0d0;
-	margin: 50px 0;
+	margin: 0;
 }
 
 .the-selection {
@@ -97,3 +144,83 @@ button {
 		}
 	}
 }
+
+
+
+.bandit-wrapper {
+	border: solid 1px #909090;
+	padding: 10px 0;
+}
+.bandit
+{
+    position: relative;
+    height: 260px;
+    overflow: hidden;
+}
+
+.tablo1, .tablo2, .tablo3
+{
+    position: absolute;
+    overflow: hidden;
+}
+.tablo1
+{
+    left: 12px;
+}
+.tablo2
+{
+    left: 180px;
+}
+.tablo3
+{
+    left: 346px;
+}
+.tablo1img, .tablo2img, .tablo3img
+{
+    display: block;
+    height: 7440px;
+    margin-top: 0;
+}
+.disabled
+{
+    background: url('images/BTN_spin_d.png') no-repeat;
+}
+.anim
+{
+    -webkit-animation: move 1s ease-in-out .5s 2 alternate;
+         -o-animation: move 1s ease-in-out .5s 2 alternate;
+            animation: move 1s ease-in-out .5s 2 alternate;
+}
+.potter {
+    background: url('images/potter.png') no-repeat;
+    height: 150px;
+    width: 150px;
+    border: solid 1px #e0e0e0;
+    display: block;
+}
+
+.potter.img0{
+    background-position: 0 0;
+}
+.potter.img1{
+    background-position: -146px 0;
+}
+.potter.img2{
+    background-position: -292px 0;
+}
+.potter.img3{
+    background-position: 0 -150px;
+}
+.potter.img4{
+    background-position: -146px -150px;
+}
+.potter.img5{
+    background-position: -292px -150px;
+}
+
+
+
+
+
+
+

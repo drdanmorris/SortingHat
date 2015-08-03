@@ -7,112 +7,140 @@ angular.module('CDrive', []);
     angular.module('CDrive').controller('PickerController', PickerController);
 
 
+    function getLinesFrom(id) {
+      return $('#' + id).text().split('\n');
+    }
 
 
 
 
-    PickerController.$inject = ['$scope', '$http'];
-    function PickerController(scope, $http) {
+    PickerController.$inject = ['$scope', '$http', '$timeout'];
+    function PickerController(scope, $http, $timeout) {
 
-      var availableHouses = [{name: 'Jail', number: 8}, {name: 'Psych', number : 8}];
-      var houses = [];
+      var allHouses = [];
+      var results = {};
+      var pupils, currentPupilIndex;
 
-      _.each(availableHouses, function(house) {
-        while(--house.number >= 0) {
-          houses.push(house.name);
-        }
-      });
+      $('#houses').text('Jail - 8\nPysch Ward -8');
+      $('#pupils').text('Daniel\nPaul\nBen\nGurpreet\nSonya\nRhys\nYini\nAndy\nKawai\nLuke\nNatalia\nPatrick\nPuja\nRagha\nShyarmal\nHarshila');
 
-      scope.houses = houses;
+
+    	var sound = {
+        rumble: new Audio("assets/rumble.mp3")
+      };
 
     	
+      pupils = getLinesFrom('pupils');
+      pupils = shuffle(pupils);
+      currentPupilIndex = 0;
+      scope.pupil = null;
+      scope.mode = 'start';
+      scope.picking = false;
+      scope.showing = false;
+      scope.enrolling = true;
+  
 
-    	var pupils, currentPupilIndex;
+      scope.buttonClick = function() {
+        action[scope.mode]();
+      };
 
-        $http.get('api/Class').
-          success(function (data, status, headers, config) {
-              scope.class = data[0];
-              pupils = shuffle(scope.class.Pupils.split(','));
-              currentPupilIndex = 0;
-              scope.pupil = null;
-              scope.mode = 'start';
-              scope.picking = true;
-              scope.showing = false;
-          }).
-          error(function (data, status, headers, config) {
+      
 
-          });
+      var action = {
+        start: function() {
+          sound.rumble.play();
+          scope.working = true;
+          allHouses = [];
 
-          
-
-
-          scope.buttonClick = function() {
-            action[scope.mode]();
-          };
-
-          var results = {};
-
-          var action = {
-            start: function() {
-              scope.pupil = pupils[currentPupilIndex];
-              scope.mode = 'sort';
-            },
-
-            sort: function() {
-              var selectionMatrix = [scope.houses.length];
-
-              for(var i = 0; i < 1000; i++) {
-                var selection = getRandomIntInclusive(0,scope.houses.length - 1);
-                selectionMatrix[selection] = selectionMatrix[selection] || 1;
-                selectionMatrix[selection] += 1;
-              }
-
-              var maxHouse = -1, maxSelection = -1;
-
-              for(var i = 0; i < scope.houses.length; i++) {
-                if(selectionMatrix[i] > maxSelection) {
-                  maxSelection = selectionMatrix[i];
-                  maxHouse = i;
-                }
-              }
-
-              var house = scope.selection = scope.houses[maxHouse];
-          
-              results[house] = results[house] || [];
-              results[house].push(scope.pupil);
-
-              if(scope.houses.length > 1) {
-                scope.houses.splice(maxHouse, 1);
-                scope.mode = 'next';
-              }
-              else {
-                scope.showing = true;
-                scope.picking = false;
-                this.show(results);
-              }
-
-            },
-
-            next: function() {
-              scope.pupil = pupils[++currentPupilIndex];
-              scope.mode = 'sort';
-              scope.selection = '';
-            },
-
-            show: function(results) {
-                scope.theSelection = [];
-
-                _.each(results, function(result, name){
-                  var selection = {
-                    name: name,
-                    pupils: result
-                  };
-
-                  scope.theSelection.push(selection);
-                });
+          var houses = getLinesFrom('houses');
+          _.each(houses, function(house){
+            var parts = house.split('-');
+            var name = parts[0].trim();
+            var number = parseInt(parts[1].trim());
+            while(--number >= 0) {
+              allHouses.push(name);
             }
+          });
+          scope.houses = allHouses;
 
-          };
+
+          $timeout(function(){
+            scope.pupil = pupils[currentPupilIndex];
+            scope.mode = 'sort';
+            scope.working = false;
+            scope.enrolling = false;
+            scope.picking = true;
+          }, 6000);
+        },
+
+
+        sort: function() {
+          scope.working = true;
+          scope.spinning = true;
+          bandit.spin();
+          $timeout(this.doSort, 4500);
+        },
+
+
+        doSort: function() {
+
+          var selectionMatrix = [scope.houses.length];
+
+          for(var i = 0; i < 1000; i++) {
+            var selection = getRandomIntInclusive(0,scope.houses.length - 1);
+            selectionMatrix[selection] = selectionMatrix[selection] || 1;
+            selectionMatrix[selection] += 1;
+          }
+
+          var maxHouse = -1, maxSelection = -1;
+
+          for(var i = 0; i < scope.houses.length; i++) {
+            if(selectionMatrix[i] > maxSelection) {
+              maxSelection = selectionMatrix[i];
+              maxHouse = i;
+            }
+          }
+
+          var house = scope.selection = scope.houses[maxHouse];
+      
+          results[house] = results[house] || [];
+          results[house].push(scope.pupil);
+
+          if(scope.houses.length > 1) {
+            scope.houses.splice(maxHouse, 1);
+            scope.mode = 'next';
+          }
+          else {
+            scope.showing = true;
+            scope.picking = false;
+            this.show(results);
+          }
+
+          scope.working = false;
+          scope.spinning = false;
+
+        },
+
+        next: function() {
+          scope.pupil = pupils[++currentPupilIndex];
+          scope.mode = 'sort';
+          scope.selection = '';
+        },
+
+        show: function(results) {
+            scope.theSelection = [];
+
+            _.each(results, function(result, name){
+              var selection = {
+                name: name,
+                pupils: result
+              };
+
+              scope.theSelection.push(selection);
+            });
+        }
+
+      };
 
 
 
@@ -121,20 +149,20 @@ angular.module('CDrive', []);
 
 
     function shuffle(array) {
-	  var currentIndex = array.length, temporaryValue, randomIndex ;
-	  while (0 !== currentIndex) {
-	    randomIndex = Math.floor(Math.random() * currentIndex);
-	    currentIndex -= 1;
-	    temporaryValue = array[currentIndex];
-	    array[currentIndex] = array[randomIndex];
-	    array[randomIndex] = temporaryValue;
-	  }
-	  return array;
-	}
+  	  var currentIndex = array.length, temporaryValue, randomIndex ;
+  	  while (0 !== currentIndex) {
+  	    randomIndex = Math.floor(Math.random() * currentIndex);
+  	    currentIndex -= 1;
+  	    temporaryValue = array[currentIndex];
+  	    array[currentIndex] = array[randomIndex];
+  	    array[randomIndex] = temporaryValue;
+  	  }
+  	  return array;
+  	}
 
-	function getRandomIntInclusive(min, max) {
-	  return Math.floor(Math.random() * (max - min + 1)) + min;
-	}
+  	function getRandomIntInclusive(min, max) {
+  	  return Math.floor(Math.random() * (max - min + 1)) + min;
+  	}
 
 
 

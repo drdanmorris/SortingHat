@@ -48,7 +48,7 @@ angular.module('CDrive', []);
 
       var action = {
         start: function() {
-          //sound.rumble.play();
+          sound.rumble.play();
           scope.working = true;
           allHouses = [];
 
@@ -70,7 +70,7 @@ angular.module('CDrive', []);
             scope.working = false;
             scope.enrolling = false;
             scope.picking = true;
-          }, 200);
+          }, 6000);
         },
 
 
