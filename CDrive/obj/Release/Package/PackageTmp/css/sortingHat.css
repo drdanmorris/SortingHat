@@ -89,10 +89,11 @@ button {
 
 .the-selection h2 {
   text-align: center;
-  font-size: 80px; }
+  font-size: 50px;
+  margin-bottom: 30px; }
 .the-selection h3 {
   text-align: left;
-  font-size: 60px;
+  font-size: 30px;
   margin: 0; }
 .the-selection div {
   width: 200px;
@@ -102,7 +103,7 @@ button {
     margin-left: 0;
     padding: 0; }
     .the-selection div ul li {
-      font-size: 40px; }
+      font-size: 24px; }
 
 .bandit-wrapper {
   border: solid 1px #909090;

@@ -71,7 +71,7 @@
 			</div>
 
 
-			<button ng-click="buttonClick()" ng-disabled="working">{{mode}}</button>
+			<button ng-click="buttonClick()" ng-disabled="working" ng-show="picking || enrolling">{{mode}}</button>
 
 		</div>
 

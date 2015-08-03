@@ -77,8 +77,7 @@ angular.module('CDrive', []);
           scope.working = true;
           scope.spinning = true;
           bandit.spin();
-          //$timeout(this.doSort, 4500);
-          $timeout(this.doSort, 100);
+          $timeout(this.doSort, 4500);
         },
 
 
