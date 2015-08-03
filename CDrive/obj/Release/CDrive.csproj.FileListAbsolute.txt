@@ -4,3 +4,11 @@ C:\Users\drdan_000\Documents\CDrive\CDrive\bin\CDrive.pdb
 C:\Users\drdan_000\Documents\CDrive\CDrive\obj\Release\CDrive.csprojResolveAssemblyReference.cache
 C:\Users\drdan_000\Documents\CDrive\CDrive\obj\Release\CDrive.dll
 C:\Users\drdan_000\Documents\CDrive\CDrive\obj\Release\CDrive.pdb
+C:\Users\drdan_000\Documents\CDrive\CDrive\bin\Newtonsoft.Json.dll
+C:\Users\drdan_000\Documents\CDrive\CDrive\bin\System.Net.Http.Formatting.dll
+C:\Users\drdan_000\Documents\CDrive\CDrive\bin\System.Web.Http.dll
+C:\Users\drdan_000\Documents\CDrive\CDrive\bin\System.Web.Http.WebHost.dll
+C:\Users\drdan_000\Documents\CDrive\CDrive\bin\Newtonsoft.Json.xml
+C:\Users\drdan_000\Documents\CDrive\CDrive\bin\System.Net.Http.Formatting.xml
+C:\Users\drdan_000\Documents\CDrive\CDrive\bin\System.Web.Http.xml
+C:\Users\drdan_000\Documents\CDrive\CDrive\bin\System.Web.Http.WebHost.xml

@@ -74,11 +74,12 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="css\sortingHat.css" />
     <Content Include="packages.config" />
     <None Include="Properties\PublishProfiles\ASBGees.pubxml" />
     <Content Include="Global.asax" />
-    <Content Include="sass\picker.scss" />
     <Content Include="sasswatch.bat" />
+    <Content Include="sass\sortingHat.scss" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -88,9 +89,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="css\images\hat.jpg" />
-    <Content Include="css\picker.css" />
+    <Content Include="scripts\sortingHat.js" />
     <Content Include="SortingHat.html" />
-    <Content Include="scripts\picker.js" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>

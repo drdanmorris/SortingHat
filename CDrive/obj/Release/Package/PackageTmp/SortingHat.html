@@ -2,13 +2,11 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <title>C:Drive</title>
-    <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script>
 
-    <link rel="stylesheet" href="css/sortingHat.css">
-    <link rel="stylesheet" href="css/bandit.css">
 
+    <link rel="stylesheet" href="css/sortingHat.css">
 </head>
 <body ng-app="CDrive" ng-controller="PickerController">
 
@@ -18,29 +16,16 @@
 
 		<div class="inner">
 
-			
-			<!-- sorting -->
 			<div ng-show="picking" class="picking">
 				<div ng-show="pupil" class="pupil">
 					<label>Batter Up:</label>
 					<span>{{pupil}}</span>			
 				</div>
-
-				<!-- sorting -->
-				<div class="bandit">
-			        <div class="tablo1"></div>
-			        <div class="tablo2"></div>
-			        <div class="tablo3"></div>
-			    </div>
-
-				<!-- the chosen house -->
 				<div class="selection" ng-bind="selection" ng-show="selection"></div>
-				
-				<button ng-click="buttonClick()" ng-disabled="working || sorting">{{mode}}</button>
+				<button ng-click="buttonClick()">{{mode}}</button>
 				
 			</div>
 
-			<!-- the results -->
 			<div ng-show="showing" class="the-selection">
 				<h2>The Houses</h2>
 
@@ -50,17 +35,13 @@
 						<li ng-repeat="pupil in selection.pupils">{{pupil}}</li>
 					</ul>
 				</div>
+
 			</div>
 
 		</div>
 
 
 	</main>
-
-
-	
-
-
     
 
 
@@ -68,6 +49,5 @@
 
 
     <script src="scripts/sortingHat.js"></script>
-    <script src="scripts/bandit.js"></script>
 </body>
 </html>

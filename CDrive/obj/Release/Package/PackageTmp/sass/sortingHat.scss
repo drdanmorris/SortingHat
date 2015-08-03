@@ -19,7 +19,7 @@ h1 {
 
  
 main {
-	width: 700px;
+	width: 500px;
 	margin: 50px auto 0 auto;
 	border: solid 1px #a0a0a0;
 	padding: 0;
@@ -27,23 +27,18 @@ main {
 
 	.inner {
 		padding: 40px;
-		padding-top: 20px;
-		position: relative;
 	}
 }
 
-.picking {
-	height: 400px;
 
-	button {
-		position: absolute;
-		bottom: 25px;
-		left: 25px;
-		width: 450px;
-	}
+.hat {
+	width: 600px;
+	height: 500px;
+	
 }
 
 button {
+	width: 100%;
 	height: 100px;
 	font-weight: bold;
 	font-size: 50px;
@@ -70,7 +65,7 @@ button {
 	padding: 30px 0;
 	text-align: center;
 	border: solid 1px #d0d0d0;
-	margin: 0;
+	margin: 50px 0;
 }
 
 .the-selection {

@@ -11,8 +11,8 @@ angular.module('CDrive', []);
 
 
 
-    PickerController.$inject = ['$scope', '$http', '$timeout'];
-    function PickerController(scope, $http, $timeout) {
+    PickerController.$inject = ['$scope', '$http'];
+    function PickerController(scope, $http) {
 
       var availableHouses = [{name: 'Jail', number: 8}, {name: 'Psych', number : 8}];
       var houses = [];
@@ -25,9 +25,7 @@ angular.module('CDrive', []);
 
       scope.houses = houses;
 
-    	var sound = {
-        rumble: new Audio("assets/rumble.mp3")
-      };
+    	
 
     	var pupils, currentPupilIndex;
 
@@ -56,23 +54,11 @@ angular.module('CDrive', []);
 
           var action = {
             start: function() {
-              sound.rumble.play();
-              scope.working = true;
-              $timeout(function(){
-                scope.pupil = pupils[currentPupilIndex];
-                scope.mode = 'sort';
-                scope.working = false;
-              }, 6000);
+              scope.pupil = pupils[currentPupilIndex];
+              scope.mode = 'sort';
             },
 
             sort: function() {
-              scope.sorting = true;
-              bandit.spin();
-              $timeout(this.doSort, 3000);
-            },
-
-            doSort: function() {
-
               var selectionMatrix = [scope.houses.length];
 
               for(var i = 0; i < 1000; i++) {
@@ -104,8 +90,6 @@ angular.module('CDrive', []);
                 scope.picking = false;
                 this.show(results);
               }
-
-              scope.sorting = false;
 
             },
 
