@@ -74,7 +74,15 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="assets\applause.mp3" />
+    <Content Include="assets\applause.wav" />
+    <Content Include="assets\boo.mp3" />
+    <Content Include="assets\boo.wav" />
+    <Content Include="assets\ching.mp3" />
+    <Content Include="assets\ching2.mp3" />
+    <Content Include="assets\coin2.wav" />
     <Content Include="assets\rumble.mp3" />
+    <Content Include="assets\rumble2.mp3" />
     <Content Include="css\images\Bet_Line.png" />
     <Content Include="css\images\BG.png" />
     <Content Include="css\images\potter.png" />

@@ -21,12 +21,15 @@ angular.module('CDrive', []);
       var results = {};
       var pupils, currentPupilIndex;
 
-      $('#houses').text('Jail - 8\nPysch Ward -8');
+      $('#houses').text('Jail - 7\nPysch Ward - 7');
       $('#pupils').text('Ben\nDaniel\nGurpreet\nHarshila\nLuke\nNatalia\nPatrick\nPaul\nRagha\nRhys\nShyarmal\nSonya\nVanita\nYini');
 
 
     	var sound = {
-        rumble: new Audio("assets/rumble.mp3")
+        rumble: new Audio("assets/rumble2.mp3"),
+        coin: new Audio("assets/ching2.mp3"),
+        clap: new Audio("assets/applause.mp3"),
+        boo: new Audio("assets/boo.mp3")
       };
 
     	
@@ -43,6 +46,7 @@ angular.module('CDrive', []);
         action[scope.mode]();
       };
 
+      var houses;
       
 
       var action = {
@@ -51,7 +55,7 @@ angular.module('CDrive', []);
           scope.working = true;
           allHouses = [];
 
-          var houses = getLinesFrom('houses');
+          houses = getLinesFrom('houses');
           _.each(houses, function(house){
             var parts = house.split('-');
             var name = parts[0].trim();
@@ -77,10 +81,17 @@ angular.module('CDrive', []);
           scope.working = true;
           scope.spinning = true;
           bandit.spin();
-          //$timeout(this.doSort, 4500);
-          $timeout(this.doSort, 100);
+
+          $timeout(this.ping, 2600);
+          $timeout(this.ping, 3300);
+          $timeout(this.ping, 4000);
+
+          $timeout(this.doSort, 4500);
         },
 
+        ping: function() {
+          sound.coin.play();
+        },
 
         doSort: function() {
 
@@ -102,7 +113,10 @@ angular.module('CDrive', []);
           }
 
           var house = scope.selection = scope.houses[maxHouse];
-      
+        
+          if(houses[0].indexOf(house) === 0) sound.boo.play();
+          else sound.clap.play();
+
           results[house] = results[house] || [];
           results[house].push(scope.pupil);
 

@@ -26,10 +26,10 @@ angular.module('CDrive', []);
 
 
     	var sound = {
-        rumble: new Audio("assets/rumble.mp3"),
-        coin: new Audio("assets/coin2.wav"),
-        clap: new Audio("assets/applause.wav"),
-        boo: new Audio("assets/boo.wav")
+        rumble: new Audio("assets/rumble2.mp3"),
+        coin: new Audio("assets/ching2.mp3"),
+        clap: new Audio("assets/applause.mp3"),
+        boo: new Audio("assets/boo.mp3")
       };
 
     	
@@ -84,7 +84,7 @@ angular.module('CDrive', []);
 
           $timeout(this.ping, 2600);
           $timeout(this.ping, 3300);
-          $timeout(this.ping, 3800);
+          $timeout(this.ping, 4000);
 
           $timeout(this.doSort, 4500);
         },
