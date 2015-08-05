@@ -53,10 +53,10 @@ var bandit = {};
         }, 3000);
         $(".tablo2img").stop().animate({
             marginTop: '-6500'
-        }, 3500);
+        }, 3700);
         $(".tablo3img").stop().animate({
             marginTop: '-6500'
-        }, 4000);
+        }, 4200);
 
     }
 

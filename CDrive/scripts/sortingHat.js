@@ -27,9 +27,8 @@ angular.module('CDrive', []);
 
     	var sound = {
         rumble: new Audio("assets/rumble2.mp3"),
-        coin: new Audio("assets/ching2.mp3"),
-        clap: new Audio("assets/applause.mp3"),
-        boo: new Audio("assets/boo.mp3")
+        boo: new Audio("assets/ching-boo.mp3"),
+        clap: new Audio("assets/ching-clap.mp3")
       };
 
     	
@@ -46,7 +45,7 @@ angular.module('CDrive', []);
         action[scope.mode]();
       };
 
-      var houses;
+      var houses, maxHouse;
       
 
       var action = {
@@ -80,30 +79,26 @@ angular.module('CDrive', []);
         sort: function() {
           scope.working = true;
           scope.spinning = true;
+
+          var house = this.doSort();
+          if(houses[0].indexOf(house) === 0) sound.boo.play();
+          else sound.clap.play();
+
           bandit.spin();
-
-          $timeout(this.ping, 2600);
-          $timeout(this.ping, 3300);
-          $timeout(this.ping, 4000);
-
-          $timeout(this.doSort, 4500);
-        },
-
-        ping: function() {
-          sound.coin.play();
+          $timeout(this.doSortComplete, 4500);
         },
 
         doSort: function() {
 
-          var selectionMatrix = [scope.houses.length];
+          var selectionMatrix = [];
 
-          for(var i = 0; i < 1000; i++) {
+          for(var i = 0; i < 100; i++) {
             var selection = getRandomIntInclusive(0,scope.houses.length - 1);
             selectionMatrix[selection] = selectionMatrix[selection] || 1;
             selectionMatrix[selection] += 1;
           }
 
-          var maxHouse = -1, maxSelection = -1;
+          maxHouse = -1, maxSelection = -1;
 
           for(var i = 0; i < scope.houses.length; i++) {
             if(selectionMatrix[i] > maxSelection) {
@@ -113,13 +108,12 @@ angular.module('CDrive', []);
           }
 
           var house = scope.selection = scope.houses[maxHouse];
-        
-          if(houses[0].indexOf(house) === 0) sound.boo.play();
-          else sound.clap.play();
-
           results[house] = results[house] || [];
           results[house].push(scope.pupil);
+          return house;
+        },
 
+        doSortComplete: function() {
           if(scope.houses.length > 1 && currentPupilIndex < pupils.length-1) {
             scope.houses.splice(maxHouse, 1);
             scope.mode = 'next';
@@ -134,6 +128,7 @@ angular.module('CDrive', []);
           scope.spinning = false;
 
         },
+
 
         next: function() {
           scope.pupil = pupils[++currentPupilIndex];
